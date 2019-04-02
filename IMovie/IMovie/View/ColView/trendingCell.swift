@@ -1,5 +1,5 @@
 //
-//  PopularActorsCell.swift
+//  trendingCell.swift
 //  IMovie
 //
 //  Created by liza_kaganskaya on 4/3/19.
@@ -8,13 +8,8 @@
 
 import UIKit
 
-class PopularActorsCell: UICollectionViewCell {
+class trendingCell: UICollectionViewCell {
     
     @IBOutlet weak var activity: UIActivityIndicatorView!
     @IBOutlet weak var imageView: UIImageView!
-    
-    override func awakeFromNib() {
-        imageView.rounded()
-        
-    }
 }

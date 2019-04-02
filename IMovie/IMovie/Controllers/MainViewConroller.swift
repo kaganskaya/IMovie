@@ -47,8 +47,25 @@ extension MainViewConroller : UITableViewDataSource, UITableViewDelegate {
         var cell:UITableViewCell = UITableViewCell()
         
         switch indexPath.section {
+            
             case 0:
             cell = tableView.dequeueReusableCell(withIdentifier: "upcomingCell") as!  commingSoonTableCell
+            break
+            
+            case 1:
+            cell = tableView.dequeueReusableCell(withIdentifier: "actorCell") as!  PopularActorsTableCell
+            break
+            
+            case 2:
+            cell = tableView.dequeueReusableCell(withIdentifier: "nowPlaying") as!  nowPlayingTableCell
+            break
+            
+            case 3:
+            cell = tableView.dequeueReusableCell(withIdentifier: "trendingCell") as!  trendinfTableViewCell
+            break
+            
+            case 4:
+            cell = tableView.dequeueReusableCell(withIdentifier: "topRatedCell") as!  topRatedTableCell
             break
             
         default: break
@@ -60,7 +77,7 @@ extension MainViewConroller : UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        view.tintColor = .white
+        view.tintColor = UIColor.lightText
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = UIColor.red
         header.textLabel?.font = UIFont(name: "Mosk Normal 400", size: 14)

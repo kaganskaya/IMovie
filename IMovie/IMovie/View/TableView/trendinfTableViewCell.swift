@@ -1,5 +1,5 @@
 //
-//  PopularActorsTableCell.swift
+//  trendinfTableViewCell.swift
 //  IMovie
 //
 //  Created by liza_kaganskaya on 4/3/19.
@@ -9,35 +9,36 @@
 import UIKit
 import TMDBSwift
 
-class PopularActorsTableCell: UITableViewCell {
+class trendinfTableViewCell: UITableViewCell {
+
     
-    var actors:[PersonResults] = []
-   
+    @IBOutlet weak var trendingColView: UICollectionView!
+    
+    var films:[MovieMDB] = []
     var cancelRequest: Bool = false
     
-    @IBOutlet weak var actorsViewController: UICollectionView!
-    
     override func awakeFromNib() {
-        actorsViewController.delegate = self as! UICollectionViewDelegate
-        actorsViewController.dataSource = self as! UICollectionViewDataSource
-        getActors()
+        super.awakeFromNib()
+        trendingColView.delegate = self
+        trendingColView.dataSource = self
+        getTrending()
     }
-    private func getActors(onPage page: Int = 1){
-       
+    private func getTrending(onPage page: Int = 1){
+        
         guard !cancelRequest else { return }
         
         TMDBConfig.apikey = "63f43d701067d757b85757bdb44a9a26"
         
-        PersonMDB.popular(page:page) {
-            (client, actorMDB) in
+        MovieMDB.popular(page:page) {
+            (client, movieDB) in
             if client.error == nil {
                 
-                self.actors = actorMDB!
+                self.films = movieDB!
                 
                 
                 
                 DispatchQueue.main.async {
-                    self.actorsViewController.reloadData()
+                    self.trendingColView.reloadData()
                 }
                 
                 if let pagesTotal = client.pageResults?.total_pages, page < pagesTotal {
@@ -50,7 +51,6 @@ class PopularActorsTableCell: UITableViewCell {
             } else if let _ = client.error,let tryAgain = client.error?.userInfo["Retry-After"] as? Int {
                 print("Retry after: \(tryAgain) seconds")
                 DispatchQueue.main.async {
-                   
                 }
             }else{
                 print("Error code: \(String(describing: client.error?.code))")
@@ -62,20 +62,19 @@ class PopularActorsTableCell: UITableViewCell {
     }
     
 }
-
-extension PopularActorsTableCell: UICollectionViewDataSource,UICollectionViewDelegate {
+extension trendinfTableViewCell: UICollectionViewDataSource,UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return actors.count
+        return films.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "actorCell", for: indexPath) as! PopularActorsCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "trendingCell", for: indexPath) as! trendingCell
         
-        let actor = actors[indexPath.row]
+        let film = films[indexPath.row]
         
-      
-        if let posterPath = actor.profile_path {
+        
+        if let posterPath = film.backdrop_path {
             
             DispatchQueue.main.async {
                 cell.activity.alpha = 0.0

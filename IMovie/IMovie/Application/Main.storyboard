@@ -574,7 +574,7 @@
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="r0w-1d-nGj">
                                                     <rect key="frame" x="-11" y="-65" width="420" height="462"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="5" id="uNW-to-WgH">
                                                         <size key="itemSize" width="387" height="425"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -651,12 +651,12 @@
                                                 <constraint firstItem="r0w-1d-nGj" firstAttribute="top" secondItem="4jg-3m-dSs" secondAttribute="top" constant="-65" id="ypR-YU-v8R"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.99600237607955933" green="0.99612134695053101" blue="0.99596184492111206" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="upcommingColView" destination="r0w-1d-nGj" id="faY-rY-GDN"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="movieCell" rowHeight="90" id="Mcr-X5-JoA" customClass="ActorsRow" customModule="IMovie" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="actorCell" rowHeight="90" id="Mcr-X5-JoA" customClass="PopularActorsTableCell" customModule="IMovie" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="400" width="414" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mcr-X5-JoA" id="gUA-MZ-VM9">
@@ -665,7 +665,7 @@
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Lt3-4n-oFm">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
-                                                    <color key="backgroundColor" red="0.99600237607955933" green="0.99612134695053101" blue="0.99596184492111206" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="u4r-iz-q8h">
                                                         <size key="itemSize" width="93" height="88"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -673,7 +673,7 @@
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="movieCell" id="aJQ-7K-Rqe" customClass="ActorCell" customModule="IMovie" customModuleProvider="target">
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="actorCell" id="aJQ-7K-Rqe" customClass="PopularActorsCell" customModule="IMovie" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="1" width="93" height="88"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -683,7 +683,7 @@
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="otQ-Vv-bvB">
                                                                         <rect key="frame" x="11" y="3" width="78" height="78"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                        <color key="backgroundColor" red="0.16746402769999999" green="0.59384187669999999" blue="0.81089387690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="backgroundColor" red="0.99600237607955933" green="0.99612134695053101" blue="0.99596184492111206" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     </imageView>
                                                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="bvN-yP-4hb">
                                                                         <rect key="frame" x="36" y="44" width="20" height="20"/>
@@ -691,6 +691,10 @@
                                                                     </activityIndicatorView>
                                                                 </subviews>
                                                             </view>
+                                                            <connections>
+                                                                <outlet property="activity" destination="bvN-yP-4hb" id="HEn-48-Gwk"/>
+                                                                <outlet property="imageView" destination="otQ-Vv-bvB" id="7Pu-R1-bIg"/>
+                                                            </connections>
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>
@@ -703,8 +707,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.99600237607955933" green="0.99612134695053101" blue="0.99596184492111206" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="actorsViewController" destination="Lt3-4n-oFm" id="fcS-ed-L91"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="145" id="tDa-6V-Ij3" customClass="NowPlayingRow" customModule="IMovie" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="nowPlaying" rowHeight="145" id="tDa-6V-Ij3" customClass="nowPlayingTableCell" customModule="IMovie" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="490" width="414" height="145"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tDa-6V-Ij3" id="7MI-a1-21c">
@@ -713,7 +720,7 @@
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ELA-Bc-6Js">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="145"/>
-                                                    <color key="backgroundColor" red="0.99600237607955933" green="0.99612134695053101" blue="0.99596184492111206" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="5" id="8pa-NR-p6h">
                                                         <size key="itemSize" width="109" height="134.5"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -721,7 +728,7 @@
                                                         <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="videoCell" id="e4u-y0-5dE" customClass="NowPlayingCell" customModule="IMovie" customModuleProvider="target">
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="nowPlaying" id="e4u-y0-5dE" customClass="nowPlayingCell" customModule="IMovie" customModuleProvider="target">
                                                             <rect key="frame" x="5" y="5.333333333333333" width="109" height="134.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -744,6 +751,10 @@
                                                                 <constraint firstItem="4mk-YR-Yb3" firstAttribute="top" secondItem="e4u-y0-5dE" secondAttribute="top" id="UET-41-Dnx"/>
                                                                 <constraint firstAttribute="bottom" secondItem="4mk-YR-Yb3" secondAttribute="bottom" id="tLa-tP-QEq"/>
                                                             </constraints>
+                                                            <connections>
+                                                                <outlet property="activity" destination="RIv-e8-iIq" id="mdY-RV-i6L"/>
+                                                                <outlet property="imageView" destination="4mk-YR-Yb3" id="HRF-eA-TtM"/>
+                                                            </connections>
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>
@@ -756,8 +767,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.99600237607955933" green="0.99612134695053101" blue="0.99596184492111206" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="nowPlayingCollectionView" destination="ELA-Bc-6Js" id="Jg8-Qe-FUK"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="trendingCell" rowHeight="145" id="Gvx-6i-sFX" customClass="TrendingRow" customModule="IMovie" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="trendingCell" rowHeight="145" id="Gvx-6i-sFX" customClass="trendinfTableViewCell" customModule="IMovie" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="635" width="414" height="145"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gvx-6i-sFX" id="Psr-zL-kEZ">
@@ -766,7 +780,7 @@
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LAi-ng-i1R">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="145"/>
-                                                    <color key="backgroundColor" red="0.99600237607955933" green="0.99612134695053101" blue="0.99596184492111206" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="5" id="SMi-Eo-GeW">
                                                         <size key="itemSize" width="109" height="134.5"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -774,7 +788,7 @@
                                                         <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="trendingCell" id="xox-uB-aTb" customClass="TrendingCell" customModule="IMovie" customModuleProvider="target">
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="trendingCell" id="xox-uB-aTb" customClass="trendingCell" customModule="IMovie" customModuleProvider="target">
                                                             <rect key="frame" x="5" y="5.333333333333333" width="109" height="134.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -797,6 +811,10 @@
                                                                 <constraint firstItem="Y0t-X5-zoJ" firstAttribute="top" secondItem="xox-uB-aTb" secondAttribute="top" id="utZ-Ds-tNL"/>
                                                                 <constraint firstItem="Y0t-X5-zoJ" firstAttribute="leading" secondItem="xox-uB-aTb" secondAttribute="leading" id="yUv-sy-Afp"/>
                                                             </constraints>
+                                                            <connections>
+                                                                <outlet property="activity" destination="tLJ-NS-NW5" id="FHH-rw-SBY"/>
+                                                                <outlet property="imageView" destination="Y0t-X5-zoJ" id="JgJ-Nf-Swt"/>
+                                                            </connections>
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>
@@ -809,8 +827,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.99600237607955933" green="0.99612134695053101" blue="0.99596184492111206" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="trendingColView" destination="LAi-ng-i1R" id="yHC-Wa-O9c"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="topRatedCell" rowHeight="145" id="ZGn-N6-KJz" customClass="TopRatedRow" customModule="IMovie" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="topRatedCell" rowHeight="145" id="ZGn-N6-KJz" customClass="topRatedTableCell" customModule="IMovie" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="780" width="414" height="145"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZGn-N6-KJz" id="KT7-8a-c3m">
@@ -819,7 +840,7 @@
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="f1o-Su-7Z9">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="145"/>
-                                                    <color key="backgroundColor" red="0.99600237607955933" green="0.99612134695053101" blue="0.99596184492111206" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="5" id="qXB-UA-sMv">
                                                         <size key="itemSize" width="109" height="134.5"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -827,7 +848,7 @@
                                                         <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="topRatedCell" id="Ada-aj-gUx" customClass="TopRated" customModule="IMovie" customModuleProvider="target">
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="topRatedCell" id="Ada-aj-gUx" customClass="topRatedCell" customModule="IMovie" customModuleProvider="target">
                                                             <rect key="frame" x="5" y="5.333333333333333" width="109" height="134.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -850,6 +871,10 @@
                                                                 <constraint firstItem="YUf-Dc-J4g" firstAttribute="top" secondItem="Ada-aj-gUx" secondAttribute="top" id="Nwi-Td-mTe"/>
                                                                 <constraint firstItem="YUf-Dc-J4g" firstAttribute="leading" secondItem="Ada-aj-gUx" secondAttribute="leading" id="g1l-g2-pb4"/>
                                                             </constraints>
+                                                            <connections>
+                                                                <outlet property="activity" destination="cHv-86-myT" id="Krh-5y-fyK"/>
+                                                                <outlet property="imageView" destination="YUf-Dc-J4g" id="JJw-pT-Dqq"/>
+                                                            </connections>
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>
@@ -862,13 +887,16 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.99600237607955933" green="0.99612134695053101" blue="0.99596184492111206" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="topRatedColView" destination="f1o-Su-7Z9" id="125-ha-Z7o"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.99600237607955933" green="0.99612134695053101" blue="0.99596184492111206" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="jV8-b2-bLI" firstAttribute="top" secondItem="XH5-Va-9tJ" secondAttribute="bottom" id="Aha-gL-hyl"/>
+                            <constraint firstItem="jV8-b2-bLI" firstAttribute="top" secondItem="XH5-Va-9tJ" secondAttribute="bottom" id="5rE-R7-tZm"/>
                             <constraint firstAttribute="trailing" secondItem="XH5-Va-9tJ" secondAttribute="trailing" id="BOG-MF-Fo0"/>
                             <constraint firstItem="XH5-Va-9tJ" firstAttribute="top" secondItem="rwe-vj-Jo2" secondAttribute="top" constant="-74" id="wTd-Sn-3gU"/>
                             <constraint firstItem="XH5-Va-9tJ" firstAttribute="leading" secondItem="rwe-vj-Jo2" secondAttribute="leading" id="xhQ-KS-dce"/>
