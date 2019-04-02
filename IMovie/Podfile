@@ -1,0 +1,17 @@
+
+platform :ios, '9.0'
+use_frameworks!
+ 
+target 'IMovie' do
+    pod 'Alamofire'
+    pod 'SwiftyJSON'
+    pod 'RxSwift',    '~> 4.0'
+    pod 'RxCocoa',    '~> 4.0' 
+ pod 'AlamofireImage', '~> 3.5'
+pod 'FLAnimatedImage', '~> 1.0'
+pod 'SwiftyGif'
+ pod 'SwiftGifOrigin'
+pod 'SwiftSoup'
+pod "TMDBSwift"
+end
+ 

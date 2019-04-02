@@ -1,0 +1,58 @@
+PODS:
+  - Alamofire (4.8.1)
+  - AlamofireImage (3.5.0):
+    - Alamofire (~> 4.8)
+  - FLAnimatedImage (1.0.12)
+  - RxAtomic (4.4.0)
+  - RxCocoa (4.4.0):
+    - RxSwift (~> 4.0)
+  - RxSwift (4.4.0):
+    - RxAtomic (~> 4.4)
+  - SwiftGifOrigin (1.7.0)
+  - SwiftSoup (1.7.4)
+  - SwiftyGif (4.2.0)
+  - SwiftyJSON (4.2.0)
+  - TMDBSwift (0.5.1)
+
+DEPENDENCIES:
+  - Alamofire
+  - AlamofireImage (~> 3.5)
+  - FLAnimatedImage (~> 1.0)
+  - RxCocoa (~> 4.0)
+  - RxSwift (~> 4.0)
+  - SwiftGifOrigin
+  - SwiftSoup
+  - SwiftyGif
+  - SwiftyJSON
+  - TMDBSwift
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AlamofireImage
+    - FLAnimatedImage
+    - RxAtomic
+    - RxCocoa
+    - RxSwift
+    - SwiftGifOrigin
+    - SwiftSoup
+    - SwiftyGif
+    - SwiftyJSON
+    - TMDBSwift
+
+SPEC CHECKSUMS:
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  AlamofireImage: 1aea346f4dda2f6c67622fa5a89fcbb80d79cc16
+  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
+  RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
+  RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
+  RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
+  SwiftGifOrigin: fbd6cf37afcfcf97a5c3db996ddc0492e5c5c145
+  SwiftSoup: 92f5b348c131aed8af04f4326db1579ab19fa08c
+  SwiftyGif: a149bf84df23370592f3f075561ae02c8632a314
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  TMDBSwift: 9220f3dcee23372c05b92f8c111f5f4c37185aee
+
+PODFILE CHECKSUM: d4130a9f5b4569d9ee946c1be0a572cb31a0e6b1
+
+COCOAPODS: 1.5.3
