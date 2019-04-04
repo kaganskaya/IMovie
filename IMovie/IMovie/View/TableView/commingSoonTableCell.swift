@@ -80,7 +80,7 @@ extension commingSoonTableCell: UICollectionViewDataSource, UICollectionViewDele
                     DispatchQueue.main.async {
                         cell.activity.alpha = 0.0
                         cell.activity.stopAnimating()
-                        cell.iamgeView.downloadImageFrom(urlString: posterPath)
+                        cell.iamgeView.downloadImageFrom(urlString: posterPath, posterSize:PosterSizes.BACK_DROP)
                     }
                 } else {
             

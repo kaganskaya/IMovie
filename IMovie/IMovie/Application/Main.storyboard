@@ -186,7 +186,7 @@
         <!--TV-->
         <scene sceneID="Ski-Is-X5C">
             <objects>
-                <viewController id="bpO-2g-YZL" sceneMemberID="viewController">
+                <viewController id="bpO-2g-YZL" customClass="TVViewControler" customModule="IMovie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vDw-9W-bnA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -202,7 +202,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="popularTv" id="O9p-U6-t9m" customClass="OnAirCell" customModule="IMovie" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="popularTv" id="O9p-U6-t9m" customClass="TVCell" customModule="IMovie" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="48" width="416" height="894"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -233,6 +233,12 @@
                                                 </activityIndicatorView>
                                             </subviews>
                                         </view>
+                                        <connections>
+                                            <outlet property="AirDate" destination="ehV-R1-jYl" id="mN4-EU-CvB"/>
+                                            <outlet property="TVName" destination="6dS-EG-ZSL" id="pJd-dv-fet"/>
+                                            <outlet property="activity" destination="my2-9v-Zmh" id="RH7-4L-53j"/>
+                                            <outlet property="imageView" destination="buQ-1X-COo" id="WFl-f0-seP"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -241,6 +247,9 @@
                         <viewLayoutGuide key="safeArea" id="YBu-In-Pjl"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="TV" image="TV" id="HIo-V9-fYT"/>
+                    <connections>
+                        <outlet property="TVCollectionView" destination="dfG-Fk-Dk3" id="44d-TP-EsH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6nC-g7-ULV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -249,7 +258,7 @@
         <!--Search-->
         <scene sceneID="yzg-H0-nOp">
             <objects>
-                <viewController id="5Om-ca-WCr" sceneMemberID="viewController">
+                <viewController id="5Om-ca-WCr" customClass="SearchViewController" customModule="IMovie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hao-LX-bxW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -262,7 +271,7 @@
                                 <rect key="frame" x="0.0" y="99" width="414" height="714"/>
                                 <color key="backgroundColor" red="0.99600237607955933" green="0.99612134695053101" blue="0.99596184492111206" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" rowHeight="119" id="dtb-aO-guG" customClass="SearchResultsCell" customModule="IMovie" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" rowHeight="119" id="dtb-aO-guG" customClass="SearchTableCell" customModule="IMovie" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="119"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dtb-aO-guG" id="4LS-ZP-1pf">
@@ -282,13 +291,12 @@
                                                         <constraint firstAttribute="height" constant="21" id="S9J-L0-wxc"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="MoskMedium500" family="Mosk" pointSize="19"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="highlightedColor" red="0.99600237607955933" green="0.99612134695053101" blue="0.99596184492111206" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JYt-AA-1VY">
                                                     <rect key="frame" x="102" y="40" width="279" height="21"/>
                                                     <fontDescription key="fontDescription" name="MoskNormal400" family="Mosk Normal 400" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="textColor"/>
                                                     <color key="highlightedColor" red="0.99600237607955933" green="0.99612134695053101" blue="0.99596184492111206" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </label>
                                             </subviews>
@@ -306,6 +314,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.99600237607955933" green="0.99612134695053101" blue="0.99596184492111206" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="releaseDate" destination="JYt-AA-1VY" id="BlB-bV-OOP"/>
+                                            <outlet property="searchImage" destination="ekO-qD-Lra" id="e6M-wC-G6C"/>
+                                            <outlet property="title" destination="HuO-eG-8Zk" id="phM-d3-bNK"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -324,6 +337,10 @@
                         <viewLayoutGuide key="safeArea" id="37I-Es-aOb"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" image="search" id="vNC-sl-eRv"/>
+                    <connections>
+                        <outlet property="searchBar" destination="qXu-tp-xoJ" id="9dU-pc-v50"/>
+                        <outlet property="searchTableView" destination="cXV-2S-lSO" id="HZz-1Q-yV2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TdK-bT-ug8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

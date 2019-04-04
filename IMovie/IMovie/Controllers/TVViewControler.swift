@@ -1,45 +1,47 @@
 //
-//  topRatedTableCell.swift
+//  TVViewControler.swift
 //  IMovie
 //
-//  Created by liza_kaganskaya on 4/3/19.
+//  Created by liza_kaganskaya on 4/4/19.
 //  Copyright © 2019 liza_kaganskaya. All rights reserved.
 //
 
 import UIKit
 import TMDBSwift
 
-class topRatedTableCell: UITableViewCell {
-   
+class TVViewControler: UIViewController {
+
+    @IBOutlet weak var TVCollectionView: UICollectionView!
     
-    @IBOutlet weak var topRatedColView: UICollectionView!
-    
-    var films:[MovieMDB] = []
     var cancelRequest: Bool = false
+
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        topRatedColView.delegate = self
-        topRatedColView.dataSource = self
-        getTopRated()
-        
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        TVCollectionView.delegate = self as UICollectionViewDelegate
+        TVCollectionView.dataSource = self as UICollectionViewDataSource
+        TVCollectionView.reloadData()
+        getTvShows()
     }
-    private func getTopRated(onPage page: Int = 1){
-        
+    
+    var tvShows:[TVMDB] = []
+   
+    func getTvShows(onPage page: Int = 1){
+       
         guard !cancelRequest else { return }
         
         TMDBConfig.apikey = "63f43d701067d757b85757bdb44a9a26"
         
-        MovieMDB.toprated(page:page) {
-            (client, movieDB) in
+        TVMDB.ontheair(page:page, language:"en") {
+            (client, TVdb) in
             if client.error == nil {
                 
-                self.films = movieDB!
+                self.tvShows = TVdb!
                 
                 
                 
                 DispatchQueue.main.async {
-                    self.topRatedColView.reloadData()
+                    self.TVCollectionView.reloadData()
                 }
                 
                 if let pagesTotal = client.pageResults?.total_pages, page < pagesTotal {
@@ -58,43 +60,39 @@ class topRatedTableCell: UITableViewCell {
                 print("There was an error: \(String(describing: client.error?.userInfo))")
             }
         }
-        
-        
     }
-    
 }
-extension topRatedTableCell: UICollectionViewDataSource,UICollectionViewDelegate {
+
+extension TVViewControler: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return films.count
+        return tvShows.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let tvCell = collectionView.dequeueReusableCell(withReuseIdentifier: "popularTv", for: indexPath) as! TVCell
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "topRatedCell", for: indexPath) as! topRatedCell
+        let tv = tvShows[indexPath.row]
         
-        let film = films[indexPath.row]
+        tvCell.TVName.text = tv.name
+        tvCell.AirDate.text = ("Original Air Date: " + (tv.first_air_date!))
         
-        
-        if let posterPath = film.backdrop_path {
+        if let posterPath = tv.poster_path {
             
             DispatchQueue.main.async {
-                cell.activity.alpha = 0.0
-                cell.activity.stopAnimating()
-                cell.imageView.downloadImageFrom(urlString: posterPath,posterSize:PosterSizes.BACK_DROP)
+                tvCell.activity.alpha = 0.0
+                tvCell.activity.stopAnimating()
+                tvCell.imageView.downloadImageFrom(urlString: posterPath, posterSize:PosterSizes.ORIGINAL_POSTER)
             }
         } else {
             
-            cell.activity.alpha = 0.0
-            cell.activity.stopAnimating()
+            tvCell.activity.alpha = 0.0
+            tvCell.activity.stopAnimating()
         }
-        return cell
-        
-        
+        return tvCell
     }
     
+    
+    
+    
 }
-
-
-   
-
-

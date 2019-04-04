@@ -79,7 +79,7 @@ extension trendinfTableViewCell: UICollectionViewDataSource,UICollectionViewDele
             DispatchQueue.main.async {
                 cell.activity.alpha = 0.0
                 cell.activity.stopAnimating()
-                cell.imageView.downloadImageFrom(urlString: posterPath)
+                cell.imageView.downloadImageFrom(urlString: posterPath,posterSize:PosterSizes.BACK_DROP)
             }
         } else {
             

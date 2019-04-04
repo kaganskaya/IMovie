@@ -25,10 +25,11 @@ var posterSizes = ["w92", "w154", "w185", "w342", "w500", "w780", "w1280", "orig
 extension UIImageView {
     
     
-    func downloadImageFrom(urlString: String) {
+    func downloadImageFrom(urlString: String, posterSize:String) {
         
         let baseURL = URL(string: IMAGE_BASE_URL)!
-        let url = baseURL.appendingPathComponent(PosterSizes.BACK_DROP).appendingPathComponent(urlString)
+        let url = baseURL.appendingPathComponent(posterSize).appendingPathComponent(urlString)
+        
         downloadImageFrom(url: url)
     }
     
