@@ -22,48 +22,51 @@ class commingSoonTableCell: UITableViewCell {
         upcommingColView.dataSource = self
         getUpcoming()
     }
-    private func getUpcoming(onPage page: Int = 1){
-        
+    private func getUpcoming(){
+        self.movies.removeAll()
         guard !cancelRequest else { return }
         
         TMDBConfig.apikey = "63f43d701067d757b85757bdb44a9a26"
-        
-        MovieMDB.upcoming(page:page, language:"en") {
+        for number in (1...3) {
+        MovieMDB.upcoming( page:number) {
             (client, movieDB) in
             if client.error == nil {
+                let date = NSDate()
                 
-                self.movies = movieDB!
-            
+                for i in movieDB!{
+
+                    if (i.release_date?.description)! > date.description {
+                        self.movies.append(i)
+                    }
+                }
                 
+                print(self.movies.count)
+
                 
             DispatchQueue.main.async {
                 self.upcommingColView.reloadData()
             }
             
-            if let pagesTotal = client.pageResults?.total_pages, page < pagesTotal {
-                   guard !self.cancelRequest else {
-                       print("Cancel request deinied")
-                       return
-                    }
             }
-        
-            } else if let _ = client.error,let tryAgain = client.error?.userInfo["Retry-After"] as? Int {
-                print("Retry after: \(tryAgain) seconds")
-                DispatchQueue.main.async {
-                   // self.getUpcoming(onPage: page)
-                }
-            }else{
-                print("Error code: \(String(describing: client.error?.code))")
-                print("There was an error: \(String(describing: client.error?.userInfo))")
-            }
-            }
-            
+            }}
             
         }
 }
 extension commingSoonTableCell: UICollectionViewDataSource, UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return movies.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+       
+        if let mainViewController = parentViewController as? MainViewConroller {
+            guard movies.count > indexPath.row else { return }
+            let movie = movies[indexPath.row]
+            guard let detailVC = mainViewController.storyboard?.instantiateViewController(withIdentifier: "movieDetail") as? DetailViewController else { return }
+            detailVC.movie = movie
+            detailVC.movieID = movie.id
+            mainViewController.show(detailVC, sender: self)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -80,7 +83,7 @@ extension commingSoonTableCell: UICollectionViewDataSource, UICollectionViewDele
                     DispatchQueue.main.async {
                         cell.activity.alpha = 0.0
                         cell.activity.stopAnimating()
-                        cell.iamgeView.downloadImageFrom(urlString: posterPath, posterSize:PosterSizes.BACK_DROP)
+                        cell.iamgeView.downloadImageFrom(urlString: posterPath, posterSize:PosterSizes.ORIGINAL_POSTER)
                     }
                 } else {
             

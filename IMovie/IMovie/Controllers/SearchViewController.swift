@@ -17,8 +17,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var films:[MovieMDB] = []
     
-    var cancelRequest: Bool = false
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchTableView.delegate = self
@@ -39,13 +38,17 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             DispatchQueue.main.async {
                 self.searchTableView.reloadData()
                 self.searchBar.text = nil
+                self.searchBar.endEditing(true)
+
             }
          
         }
        
     }
     
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true) //Hide the keyboard
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return films.count
@@ -62,5 +65,13 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return 125
     }
     
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let movie = films[indexPath.row]
+        let detailVC = storyboard?.instantiateViewController(withIdentifier: "movieDetail") as? DetailViewController
+        detailVC!.movie = movie
+        detailVC!.movieID = movie.id
+        self.showDetailViewController(detailVC!, sender: self)
+    }
 }
+

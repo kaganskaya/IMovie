@@ -42,20 +42,7 @@ class topRatedTableCell: UITableViewCell {
                     self.topRatedColView.reloadData()
                 }
                 
-                if let pagesTotal = client.pageResults?.total_pages, page < pagesTotal {
-                    guard !self.cancelRequest else {
-                        print("Cancel request deinied")
-                        return
-                    }
-                }
-                
-            } else if let _ = client.error,let tryAgain = client.error?.userInfo["Retry-After"] as? Int {
-                print("Retry after: \(tryAgain) seconds")
-                DispatchQueue.main.async {
-                }
-            }else{
-                print("Error code: \(String(describing: client.error?.code))")
-                print("There was an error: \(String(describing: client.error?.userInfo))")
+              
             }
         }
         
@@ -67,7 +54,15 @@ extension topRatedTableCell: UICollectionViewDataSource,UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return films.count
     }
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let mainViewController = parentViewController as? MainViewConroller {
+            let movie = films[indexPath.row]
+            guard let detailVC = mainViewController.storyboard?.instantiateViewController(withIdentifier: "movieDetail") as? DetailViewController else { return }
+            detailVC.movie = movie
+            detailVC.movieID = movie.id
+            mainViewController.show(detailVC, sender: self)
+        }
+    }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "topRatedCell", for: indexPath) as! topRatedCell
@@ -75,12 +70,12 @@ extension topRatedTableCell: UICollectionViewDataSource,UICollectionViewDelegate
         let film = films[indexPath.row]
         
         
-        if let posterPath = film.backdrop_path {
+        if let posterPath = film.poster_path {
             
             DispatchQueue.main.async {
                 cell.activity.alpha = 0.0
                 cell.activity.stopAnimating()
-                cell.imageView.downloadImageFrom(urlString: posterPath,posterSize:PosterSizes.BACK_DROP)
+                cell.imageView.downloadImageFrom(urlString: posterPath,posterSize:PosterSizes.ROW_POSTER)
             }
         } else {
             

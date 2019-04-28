@@ -41,20 +41,6 @@ class trendinfTableViewCell: UITableViewCell {
                     self.trendingColView.reloadData()
                 }
                 
-                if let pagesTotal = client.pageResults?.total_pages, page < pagesTotal {
-                    guard !self.cancelRequest else {
-                        print("Cancel request deinied")
-                        return
-                    }
-                }
-                
-            } else if let _ = client.error,let tryAgain = client.error?.userInfo["Retry-After"] as? Int {
-                print("Retry after: \(tryAgain) seconds")
-                DispatchQueue.main.async {
-                }
-            }else{
-                print("Error code: \(String(describing: client.error?.code))")
-                print("There was an error: \(String(describing: client.error?.userInfo))")
             }
         }
         

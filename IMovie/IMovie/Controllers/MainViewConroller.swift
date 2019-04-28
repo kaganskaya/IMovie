@@ -12,14 +12,10 @@ class MainViewConroller: UIViewController {
 
     @IBOutlet weak var mainTableView: UITableView!
     
-    var categories = ["", "Popular Celebrities", "Now Playing", "Trending", "Top Rated"]
+    var categories = ["", "Popular Celebrities", "Now Playing", "Top Rated"]
 
     var cancelRequest: Bool = false
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        cancelRequest = false
-    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,10 +28,6 @@ class MainViewConroller: UIViewController {
         return .lightContent
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        cancelRequest = true
-    }
     
 }
 
@@ -61,10 +53,6 @@ extension MainViewConroller : UITableViewDataSource, UITableViewDelegate {
             break
             
             case 3:
-            cell = tableView.dequeueReusableCell(withIdentifier: "trendingCell") as!  trendinfTableViewCell
-            break
-            
-            case 4:
             cell = tableView.dequeueReusableCell(withIdentifier: "topRatedCell") as!  topRatedTableCell
             break
             
@@ -81,8 +69,8 @@ extension MainViewConroller : UITableViewDataSource, UITableViewDelegate {
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = UIColor.red
         header.textLabel?.font = UIFont(name: "Mosk Normal 400", size: 14)
-        
-        
+
+
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

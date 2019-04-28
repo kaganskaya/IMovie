@@ -34,11 +34,7 @@ class SearchTableCell: UITableViewCell {
             DispatchQueue.main.async {
                 self.searchImage.downloadImageFrom(urlString: posterPath,posterSize:PosterSizes.DETAIL_POSTER)
             }
-        } else {
-            
-            print("Search failed=:(")
-        }
-        
+        } 
         
     }
     override func awakeFromNib() {

@@ -44,20 +44,6 @@ class TVViewControler: UIViewController {
                     self.TVCollectionView.reloadData()
                 }
                 
-                if let pagesTotal = client.pageResults?.total_pages, page < pagesTotal {
-                    guard !self.cancelRequest else {
-                        print("Cancel request deinied")
-                        return
-                    }
-                }
-                
-            } else if let _ = client.error,let tryAgain = client.error?.userInfo["Retry-After"] as? Int {
-                print("Retry after: \(tryAgain) seconds")
-                DispatchQueue.main.async {
-                }
-            }else{
-                print("Error code: \(String(describing: client.error?.code))")
-                print("There was an error: \(String(describing: client.error?.userInfo))")
             }
         }
     }
@@ -67,6 +53,16 @@ extension TVViewControler: UICollectionViewDelegate, UICollectionViewDataSource 
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return tvShows.count
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+            let movie = tvShows[indexPath.row]
+            guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "movieTVDetail") as? DetailTVViewController else { return }
+            detailVC.tv = movie
+            detailVC.tvID = movie.id
+            self.showDetailViewController(detailVC, sender: self)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

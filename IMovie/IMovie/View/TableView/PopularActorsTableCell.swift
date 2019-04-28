@@ -39,22 +39,6 @@ class PopularActorsTableCell: UITableViewCell {
                 DispatchQueue.main.async {
                     self.actorsViewController.reloadData()
                 }
-                
-                if let pagesTotal = client.pageResults?.total_pages, page < pagesTotal {
-                    guard !self.cancelRequest else {
-                        print("Cancel request deinied")
-                        return
-                    }
-                }
-                
-            } else if let _ = client.error,let tryAgain = client.error?.userInfo["Retry-After"] as? Int {
-                print("Retry after: \(tryAgain) seconds")
-                DispatchQueue.main.async {
-                   
-                }
-            }else{
-                print("Error code: \(String(describing: client.error?.code))")
-                print("There was an error: \(String(describing: client.error?.userInfo))")
             }
         }
         
@@ -67,6 +51,21 @@ extension PopularActorsTableCell: UICollectionViewDataSource,UICollectionViewDel
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return actors.count
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if let mainViewController = parentViewController as? MainViewConroller {
+            guard actors.count > indexPath.row else { return }
+            let actor = actors[indexPath.row]
+            
+            
+            guard let detailVC = mainViewController.storyboard?.instantiateViewController(withIdentifier: "actorDetail") as? ActorsDetailViewController else { return }
+            detailVC.person = actor
+            detailVC.personID = actor.id
+            
+            mainViewController.show(detailVC, sender: self)
+        }
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
